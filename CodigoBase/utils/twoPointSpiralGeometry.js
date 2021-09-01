@@ -1,4 +1,4 @@
-import { rotate } from './index';
+import { rotate } from './index.js';
 
 /**
  * Gera os vértices de uma espiral definidas por dois pontos no eixo x.
@@ -10,7 +10,7 @@ import { rotate } from './index';
  * @param {number} steps Precisão das seções da aproximação
  * @returns {Float32Array} Vértices de uma espiral definida por dois pontos
  */
-function generateTwoPointSpiralGeometry(
+export function generateTwoPointSpiralGeometry(
     startRadius,
     numberOfRevolutions = 1,
     steps = 32
@@ -23,10 +23,8 @@ function generateTwoPointSpiralGeometry(
     const center1 = { x: 0, y: 0 };
     const center2 = { x: startRadius, y: 0 };
 
-    for (let revolutions = 0; revolutions < numberOfRevolutions; revolutions++) {
-        vertices.push([ radius, 0, 0 ]);
-        
-        for (let i = 1; i < (steps / 2); i++) {
+    for (let revolutions = 0; revolutions < numberOfRevolutions; revolutions++) {        
+        for (let i = 0; i < (steps / 2); i++) {
             const currentAngle = (i * stepSize);
 
             const p1 = new Float32Array([
@@ -39,7 +37,7 @@ function generateTwoPointSpiralGeometry(
 
         radius += startRadius;
 
-        for (let i = (steps / 2); i < steps; i++) {
+        for (let i = (steps / 2); i <= steps; i++) {
             const currentAngle = (i * stepSize);
 
             const p1 = new Float32Array([

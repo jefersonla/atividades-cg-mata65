@@ -1,21 +1,35 @@
+<!DOCTYPE html>
 <html>
-	<meta http-equiv="content-type" content="text/html; charset=UTF-8">
-	<head>
+    <head>
+        <meta http-equiv="content-type" content="text/html; charset=UTF-8">
 		<title>MATA65 - Computação Gráfica - Jeferson Lima</title>
         <style>
             html, body {
                 height: 100%;
                 margin: 0;
             }
+
+            h3 {
+                font-weight: normal;
+            }
             
-            main {
+            #content {
                 min-height: 100%;
-                margin-bottom: -20px;
                 z-index: 0;
             }
 
-            .alternativas {
-                display: inline;
+            canvas {
+                display: block;
+                margin: 0 auto;
+                background: #CCCCCC;
+            }
+
+            .legenda {
+                text-align: center;
+            }
+
+            .sub-questoes {
+                display: block;
             }
 
             footer {
@@ -28,26 +42,32 @@
         </style>
 	</head>	
 	<body>
+        <!-- Content -->
         <div id="content">
+
+            <!-- Header -->
             <header>
                 <h1>MATA65 - Computação Gráfica</h1>
                 <h2>Aluno: Jeferson Lima</h2>
             </header>
+            <!-- ./Header -->
 
-            <main>
-                <div id="questao1">
-                    <h3>Atividade 1 - TODO</h3>
-                
-                    <div class="alternativas">
-                    </div>
-                </h3>
+            <!-- Questoes -->
+            <main id="questoes">
+                <!-- ! Conteúdo adicionado programaticamente ! --> 
             </main>
-        </div>
+            <!-- ./Questoes -->
 
+        </div>
+        <!-- ./Content -->
+
+        <!-- Footer -->
         <footer>
             Desenvolvido por Jeferson Lima
         </footer>
+        <!-- ./Footer -->
 
+        <!-- Script principal da aplicação -->
         <script type="module" src="main.js"></script>
 	</body>
 </html>

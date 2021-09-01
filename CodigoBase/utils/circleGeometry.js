@@ -1,4 +1,4 @@
-import { rotate } from './index';
+import { rotate } from './index.js';
 
 /**
  * Gera os vértices da geometria de uma circunferência
@@ -8,16 +8,16 @@ import { rotate } from './index';
  * @param {number} innerLines Define a circunferência
  * @returns {Float32Array} Array de vertices da geometria gerada
  */
-function generateCircleGeometry(
+export function generateCircleGeometry(
     radius,
     steps = 32,
     innerLines = false
 ) {
     // Primeiro vértice é fixo no eixo x
-    const vertices = [0, radius, 0];
+    const vertices = [];
     const stepSize = 360 / steps;
 
-    for (let i = 1; i < steps; i++) {
+    for (let i = 0; i <= steps; i++) {
         const currentAngle = (i * stepSize);
         const p1 = new Float32Array([
             ...rotate(radius, 0, currentAngle),

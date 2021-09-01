@@ -1,4 +1,4 @@
-import { rotate } from './index';
+import { rotate } from './index.js';
 
 /**
  * Tipo tupla para retornos de posições x (0) e y (1)
@@ -45,7 +45,10 @@ export function getGoldenReasonCenterFromLastPoint(
 /**
  * Gera os vértices para geometria Espiral Razão de Ouro.
  * A produção dessa espiral se baseia numa aproximação bastante
- * conhecida @see 
+ * conhecida @see https://www.intmath.com/blog/mathematics/golden-spiral-6512
+ * que consiste em criar seções com uma determinada proporção e desenhar arcos
+ * de 90 graus variando o tamanho de cada raio, sempre somando o atual com o anterior
+ * similar a sequência de fibonnaci.
  * 
  * @param {number} startRadius Primeiro raio
  * @param {number} numberOfRevolutions Número de voltas 
@@ -70,7 +73,7 @@ export function generateGoldenReasonSpiralGeometry(
     let p2Vertices;
 
     while (
-        actualRadius <= maxRadius ||
+        actualRadius <= maxRadius &&
         actualNumberOfRevolutions < numberOfRevolutions
     ) {
         const quadrantOffsetNormalized = quadrantOffset % 4;
@@ -86,7 +89,7 @@ export function generateGoldenReasonSpiralGeometry(
             actualRadius
         );
 
-        for (let i = 0; i < steps; i++) {
+        for (let i = 0; i <= steps; i++) {
             const baseCurrentAngle = (i * stepSize);
             const baseNextAngle = (i * stepSize) + stepSize;
 

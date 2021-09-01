@@ -6,7 +6,7 @@
  * @param {boolean} fromCenter Indica se o retangulo deve ser posicionado a partir do seu centro interno ou a partir da origem.
  * @returns {Float32Array} Vértices do retangulo.
  */
-function generateRectangle(width, height, fromCenter = true) {
+export function generateRectangle(width, height, fromCenter = true) {
     return new Float32Array(fromCenter
         ? [
             -width / 2, -height / 2, 0,
