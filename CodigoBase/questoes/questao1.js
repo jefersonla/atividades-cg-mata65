@@ -5,7 +5,7 @@ import { questao1AVertexShader, questao1AFragmentShader, questao1BCFragmentShade
 import {generateCircleGeometry} from '../utils/circleGeometry.js';
 import {generateGoldenReasonSpiralGeometry} from '../utils/goldenReasonSpiralGeometry.js';
 import {generateTwoPointSpiralGeometry} from '../utils/twoPointSpiralGeometry.js';
-import { detectChanges, onFolderChanges, onGlobalControllerChange } from '../utils/index.js';
+import { onFolderChanges, onGlobalControllerChange } from '../utils/index.js';
 
 /**
  * Constroi a questão 1 e todas as suas subquestões
@@ -30,22 +30,20 @@ export function criaQuestao1(controles, width, height) {
             raioInicio: 0.2,
             nVoltas: 3
         }
-    }
-
-    // Controle de passos global
-    const globalStepsController = controles.add(propriedades, 'steps', 3, 36, 1);
-
+    };
+    
     const controleq1 = controles.addFolder('q1 - Formas Básicas');
+    const globalStepsController = controleq1.add(propriedades, 'steps', 3, 36, 1);
     
     const controleq1a = controleq1.addFolder('a - Circunferência');
     controleq1a.add(propriedades.circunferencia, 'raioCircunferencia', 0, 3, 0.1);
     
     const controleq1b = controleq1.addFolder('b - Espiral 1 Volta');
-    controleq1b.add(propriedades.espiral1Volta, 'raioInicio', 0, 0.41, 0.01)
+    controleq1b.add(propriedades.espiral1Volta, 'raioInicio', 0.01, 0.40, 0.01)
     controleq1b.add(propriedades.espiral1Volta, 'nVoltas', 1, 4, 1);
     
     const controleq1c = controleq1.addFolder('c - Espiral N Voltas');
-    controleq1c.add(propriedades.espiralNVoltas, 'raioInicio', 0, 0.41, 0.01)
+    controleq1c.add(propriedades.espiralNVoltas, 'raioInicio', 0.01, 0.5, 0.01)
     controleq1c.add(propriedades.espiralNVoltas, 'nVoltas', 1, 10, 1);
 
     /**
@@ -56,7 +54,10 @@ export function criaQuestao1(controles, width, height) {
         const axis = new Three.AxesHelper();
         scene.add(axis);
 
-        const vertices = generateCircleGeometry(propriedades.circunferencia.raioCircunferencia, propriedades.steps);
+        const vertices = generateCircleGeometry(
+            propriedades.circunferencia.raioCircunferencia,
+            propriedades.steps
+        );
         
         const geometry = new Three.BufferGeometry();
         geometry.setAttribute('position', new Three.Float32BufferAttribute(vertices, 3));

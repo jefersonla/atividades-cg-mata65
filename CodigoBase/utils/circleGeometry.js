@@ -35,7 +35,6 @@ export function generateCircleGeometry(
                 0, 0, 0,
                 ...p1,
                 ...p2,
-                0, 0, 0
             ]);
         }
         else {

@@ -13,6 +13,7 @@ export function generateRectangle(width, height, fromCenter = true) {
             -width / 2, height / 2, 0,
             width / 2, height / 2, 0,
             width / 2, -height / 2, 0,
+            width / 2, height / 2, 0,
             -width / 2, -height / 2, 0,
         ]
         : [
@@ -20,6 +21,7 @@ export function generateRectangle(width, height, fromCenter = true) {
             0, height, 0,
             width, height, 0,
             width, 0, 0,
+            width, height, 0,
             0, 0, 0
         ]
     );
