@@ -11,8 +11,8 @@ import { criaQuestao3 } from './questao3.js';
  */
 export function getAllQuestoes(controles, width, height) {
     return [
-        // criaQuestao1(controles, width, height),
-        // criaQuestao2(controles, width, height),
+        criaQuestao1(controles, width, height),
+        criaQuestao2(controles, width, height),
         criaQuestao3(controles, width, height)
     ];
 }
