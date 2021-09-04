@@ -25,16 +25,16 @@ export function criaQuestao3(controles, width, height) {
     };
 
     const controleq3 = controles.addFolder('q3 - Mesh Circunferência');
-    const globalStepsController = controleq3.add(propriedades, 'steps', 3, 36, 1);
+    const globalStepsController = controleq3.add(propriedades, 'steps', 3, 72, 1);
 
     const controleq3a = controleq3.addFolder('a - Linhas Circunferência'); 
-    controleq3a.add(propriedades.circunferencia, 'raioLinhas', 0, 3, 0.1);
+    controleq3a.add(propriedades.circunferencia, 'raioLinhas', 0.1, 3, 0.1);
 
     const controleq3b = controleq3.addFolder('b - Mesh Circunferência'); 
-    controleq3b.add(propriedades.circunferencia, 'raioMesh', 0, 3, 0.1);
+    controleq3b.add(propriedades.circunferencia, 'raioMesh', 0.1, 3, 0.1);
 
     const controleq3c = controleq3.addFolder('c - Shader Combinado'); 
-    controleq3c.add(propriedades.circunferencia, 'raioShaderCombinado', 0, 3, 0.1);
+    controleq3c.add(propriedades.circunferencia, 'raioShaderCombinado', 0.1, 3, 0.1);
     
     /**
      * SubQuestão A - Linhas Circunferência
@@ -140,20 +140,37 @@ export function criaQuestao3(controles, width, height) {
         const geometry = new Three.BufferGeometry();
         geometry.setAttribute('position', new Three.Float32BufferAttribute(vertices, 3));
 
-        const material = new Three.ShaderMaterial({
+        const material1 = new Three.ShaderMaterial({
             uniforms: {
-                radius: { value: propriedades.circunferencia.raioShaderCombinado }
+                radius: { value: propriedades.circunferencia.raioShaderCombinado },
+                steps: { value: propriedades.steps }
+            },
+            vertexShader: questao3VertexShader,
+            fragmentShader: questao3FragmentShader,
+            side: Three.DoubleSide
+        });
+        material1.needsUpdate = true;
+
+        const material2 = new Three.ShaderMaterial({
+            uniforms: {
+                radius: { value: propriedades.circunferencia.raioShaderCombinado },
+                steps: { value: propriedades.steps / 2 }
             },
             vertexShader: questao3CVertexShader,
             fragmentShader: questao3CFragmentShader,
             side: Three.DoubleSide
         });
-        material.needsUpdate = true;
+        material2.needsUpdate = true;
+        material2.transparent = true;
 
-        const mesh = new Three.Mesh( geometry, material );
-        mesh.geometry.attributes.position.needsUpdate = true;
+        const mesh1 = new Three.Mesh( geometry, material1 );
+        mesh1.geometry.attributes.position.needsUpdate = true;
         
-        scene.add( mesh );
+        const mesh2 = new Three.Mesh( geometry, material2 );
+        mesh2.geometry.attributes.position.needsUpdate = true;
+
+        scene.add(mesh1);
+        scene.add(mesh2);
 
         const updateGeometria = () => {
             const vertices = generateCircleGeometry(
@@ -163,7 +180,12 @@ export function criaQuestao3(controles, width, height) {
             );
 
             geometry.setAttribute('position', new Three.Float32BufferAttribute(vertices, 3));
-            mesh.material.uniforms.radius.value = propriedades.circunferencia.raioShaderCombinado;
+            
+            mesh1.material.uniforms.radius.value = propriedades.circunferencia.raioShaderCombinado;
+            mesh1.material.uniforms.steps.value = propriedades.steps;
+
+            mesh2.material.uniforms.radius.value = propriedades.circunferencia.raioShaderCombinado;
+            mesh2.material.uniforms.steps.value = propriedades.steps / 2;
         }
 
         onFolderChanges(controleq3c, updateGeometria);
