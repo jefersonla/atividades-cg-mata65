@@ -39,7 +39,7 @@ export function criaQuestao5(controles, width, height) {
         }
     };
 
-    const controleq5 = controles.addFolder('q5 - Malha de triângulos selecionavel + cor');
+    const controleq5 = controles.addFolder('q5 - Malha de triângulos + cor');
 
     const controleq5a = controleq5.addFolder('a - Malha selecionavel cor (use o menu!)');
     controleq5a.add(propriedades.malhaSelecionavel, 'tipo', TiposMalhaTriangulos);
