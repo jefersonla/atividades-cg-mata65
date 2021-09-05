@@ -45,7 +45,7 @@ export function criaQuestao5(controles, width, height) {
     controleq5a.add(propriedades.malhaSelecionavel, 'tipo', TiposMalhaTriangulos);
     controleq5a.add(propriedades.malhaSelecionavel, 'tipoCor', ['CorFixa', 'Colorido']);
     controleq5a.addColor(propriedades.malhaSelecionavel, 'cor');
-    controleq5a.add(propriedades.malhaSelecionavel, 'deslocamentoCor', 0, 360, 1);
+    controleq5a.add(propriedades.malhaSelecionavel, 'deslocamentoCor', 0, 180, 1);
     controleq5a.add(propriedades.malhaSelecionavel, 'distanciaCor', 0, 3, 0.01);
     controleq5a.add(propriedades.malhaSelecionavel, 'altura', 0.1, 3, 0.1);
     controleq5a.add(propriedades.malhaSelecionavel, 'largura', 0.1, 3, 0.1);
