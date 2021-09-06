@@ -15,11 +15,11 @@ import { criaQuestao7 } from './questao7.js';
  */
 export async function getAllQuestoes(controles, width, height) {
     return await Promise.all([
-        // criaQuestao1(controles, width, height),
-        // criaQuestao2(controles, width, height),
-        // criaQuestao3(controles, width, height),
-        // criaQuestao4(controles, width, height),
-        // criaQuestao5(controles, width, height),
+        criaQuestao1(controles, width, height),
+        criaQuestao2(controles, width, height),
+        criaQuestao3(controles, width, height),
+        criaQuestao4(controles, width, height),
+        criaQuestao5(controles, width, height),
         criaQuestao6(controles, width, height),
         criaQuestao7(controles, width, height)
     ]);
