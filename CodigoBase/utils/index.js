@@ -124,3 +124,61 @@ export function onGlobalControllerChange(globalController, cb) {
         callbacksController.forEach(_cb => _cb());
     });
 }
+
+/**
+ * Converte uma posição num plano cartesiano X, Y, para uma posição em px.
+ * O ponto 0,0 do resultado tem é representado pelo ponto (-drawWidth/2, drawHeight/2)
+ * ou seja o canto superior esquerdo do nosso plano cartesiano.
+ * 
+ * @param {number} x posição x
+ * @param {number} y posição y
+ * @param {number} pxWidth Largura em px do container
+ * @param {number} pxHeight Altura em px do container
+ * @param {number} drawWidth Tamanho da area desenhavel
+ * @param {number} drawHeight Tamanho da area desenhavel
+ * @returns {ReturnTuple} Tupla (x,y) com as coordenadas em px
+ */
+export function posToPx(
+    x, 
+    y, 
+    pxWidth, 
+    pxHeight, 
+    drawWidth = 3,
+    drawHeight = 3
+){
+    const x0 = drawWidth / 2;
+    const y0 = drawHeight / 2;
+
+    return [
+        ((x + x0) / drawWidth) * pxWidth,
+        (1 - ((y + y0) / drawHeight)) * pxHeight
+    ];
+};
+
+/**
+ * Converte um tamanho do plano cartesiano para px.
+ * 
+ * @param {number} width Largura no plano
+ * @param {number} height Altura no plano
+ * @param {number} pxWidth Largura em px do container
+ * @param {number} pxHeight Altura em px do container
+ * @param {number} drawWidth Largura da area desenhavel
+ * @param {number} drawHeight Altura da area desenhavel
+ * @returns {ReturnTuple} Tupla(x,y) com o tamanho em px desejado
+ */
+export function sizeToPx(
+    width,
+    height,
+    pxWidth,
+    pxHeight,
+    drawWidth = 3,
+    drawHeight = 3
+) {
+    const sizeWidth = (width / drawWidth) * pxWidth;
+    const sizeHeight = (height / drawHeight) * pxHeight;
+
+    return [
+        sizeWidth,
+        sizeHeight
+    ];
+};
