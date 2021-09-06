@@ -14,7 +14,7 @@ import { onFolderChanges, onGlobalControllerChange } from '../utils/index.js';
  * @param {number} width 
  * @param {number} height 
  */
-export function criaQuestao1(controles, width, height) {
+export async function criaQuestao1(controles, width, height) {
     const idQuestao = 'questao1';
 
     const propriedades = {

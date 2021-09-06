@@ -38,7 +38,7 @@ function buildAllScenes() {
 /**
  * Entrypoint da aplicação
  */
-function main() {
+async function main() {
 
     console.log('Inicializando ambiente!');
 
@@ -46,7 +46,7 @@ function main() {
     initControles();
 
     // Inicializa todas as questões permitindo que estas ofereçam controles adicionais
-    questoes = getAllQuestoes(controles, winDim, winDim);
+    questoes = await getAllQuestoes(controles, winDim, winDim);
 
     // Adiciona dom das questões a página
     for (const questao of questoes) {

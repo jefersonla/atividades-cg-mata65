@@ -12,7 +12,7 @@ import { questao3CFragmentShader, questao3CVertexShader, questao3FragmentShader,
  * @param {number} width 
  * @param {number} height 
  */
-export function criaQuestao3(controles, width, height) {
+export async function criaQuestao3(controles, width, height) {
     const idQuestao = 'questao3';
 
     const propriedades = {

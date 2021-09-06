@@ -22,7 +22,7 @@ const TiposMalhaTriangulos = {
  * @param {number} width 
  * @param {number} height 
  */
-export function criaQuestao5(controles, width, height) {
+export async function criaQuestao5(controles, width, height) {
     const idQuestao = 'questao5';
 
     const propriedades = {

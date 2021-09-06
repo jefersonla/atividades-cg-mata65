@@ -12,7 +12,7 @@ import { questao2FragmentShader, questao2VertexShader } from './questao2Shader.j
  * @param {number} width 
  * @param {number} height 
  */
-export function criaQuestao2(controles, width, height) {
+export async function criaQuestao2(controles, width, height) {
     const idQuestao = 'questao2';
 
     const propriedades = {

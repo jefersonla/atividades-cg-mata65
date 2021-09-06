@@ -17,7 +17,7 @@ export function generateCircleGeometry(
     const vertices = [];
     const stepSize = 360 / steps;
 
-    for (let i = 0; i < steps; i++) {
+    for (let i = 0; i <= steps; i++) {
         const currentAngle = (i * stepSize);
         const p1 = new Float32Array([
             ...rotate(radius, 0, currentAngle),
