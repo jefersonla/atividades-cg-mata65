@@ -7,7 +7,7 @@ import { questao6BgFragmentShader, questao6BgVertexShader, questao6FragmentShade
 import { generateCircleGeometry } from '../utils/circleGeometry.js';
 
 /**
- * Constroi a questão 2
+ * Constroi a questão 6
  * 
  * @param {GUI} controles 
  * @param {number} width 

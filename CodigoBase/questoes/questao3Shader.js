@@ -73,7 +73,7 @@ vec3 rgb2hsl(in vec3 c){
 
 void main() {
     vec3 normalizedPos = normalize(vPosition);
-    float angle = acos(dot(normalizedPos, vec3(1.0, 0.0, 0.0)));
+    float angle = (atan(normalizedPos.y, normalizedPos.x) + pi) / (2.0 * pi);
     float distanceToCenter = distance(vPosition, vec3(0.0,0.0,0.0));
 
     vec3 rgbColor;
