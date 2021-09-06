@@ -37,11 +37,33 @@ export async function criaQuestao7(controles, width, height) {
     ctx.textAlign = 'center';
 
     // Cria Circulo externo
-    const [retX, retY] = posToPx(0, 0, width, height);
-    const [retW] = sizeToPx(1.04, 1.05, width, height);
+    const [arcX, arcY] = posToPx(0, 0, width, height);
+    const [arcW] = sizeToPx(1.04, 1.05, width, height);
     ctx.beginPath();
-    ctx.arc(retX, retY, retW, 0, 2 * Math.PI);
+    ctx.arc(arcX, arcY, arcW, 0, 2 * Math.PI);
     ctx.stroke();
+    ctx.closePath();
+
+    // Cria marcação do Hue
+    const [arcExtW] = sizeToPx(1.15, 1.05, width, height);
+    ctx.beginPath();
+    ctx.arc(arcX, arcY, arcExtW, 315 * ((2 * Math.PI) / 360), 45 * ((2 * Math.PI) / 360));
+    ctx.stroke();
+    ctx.closePath();
+
+    // Escreve o valor
+    const [ hueLegendaX, hueLegendaY ] = posToPx(1.35, -0.04, width, height);
+    ctx.font = '20px sans-serif';
+    ctx.fillStyle = '#fff';
+    ctx.fillText(`H`, hueLegendaX, hueLegendaY);
+
+    // Escreve helpers
+    // const [ hueLegendaX, hueLegendaY ] = posToPx(1.35, -0.04, width, height);
+    ctx.font = '10px sans-serif';
+    ctx.fillStyle = '#fff';
+    ctx.fillText(`0º`, hueLegendaX * 0.95, hueLegendaY * 0.985);
+    ctx.fillText(`45º`, hueLegendaX * 0.85, hueLegendaY * 0.45);
+    ctx.fillText(`215º`, hueLegendaX * 0.85, hueLegendaY * 1.53);
 
     // Cria separadores laterais
     const [sepX0, sepY0] = posToPx(-1.08, 0.99, width, height);

@@ -79,14 +79,5 @@ void main() {
     gl_FragColor = texture2D(textureBg, vUv);
 
     gl_FragColor.a = distance(vPosition, vec3(0,0,0)) > radius ? 1.0 : 0.0;
-    // gl_FragColor.a = 
-    //     (
-    //         (vPosition.x > -(geometryWidth / 2.0) - 0.05) &&
-    //         (vPosition.x < (geometryWidth / 2.0) + 0.05)
-    //     ) &&
-    //     (
-    //         (vPosition.y > -(geometryHeight / 2.0) - 0.05) &&
-    //         (vPosition.y < (geometryHeight / 2.0) + 0.05)
-    //     ) ? 0.0 : 1.0;
 }
 `;
